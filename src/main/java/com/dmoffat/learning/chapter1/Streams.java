@@ -22,11 +22,11 @@ public class Streams {
         List<Apple> newApples = new ArrayList<>();
         List<Apple> newApples2 = new ArrayList<>();
 
-        // Add a million elements, creating different weights and colour for each
-        for(int i = 0; i < 1_000_000; i++) {
+        // Add one million elements, creating different weights and colour for each
+        for(int i = 0; i < 100_000; i++) {
             Apple.Builder apple = new Apple.Builder();
 
-            if(i <= 500_000) {
+            if(i <= 50_000) {
                 apple.colour(Colour.GREEN);
             } else {
                 apple.colour(Colour.RED);
@@ -45,22 +45,33 @@ public class Streams {
 
     public static void main(String[] args) {
 
-        // Sequential processing
-        long start = System.nanoTime();
-        List<Apple> greenApples = apples.stream()
-                                        .filter(apple -> apple.getColour() == Colour.GREEN)
-                                        .collect(Collectors.toList());
-        long end = System.nanoTime() - start;
-        System.out.println("Sequential took: " + TimeUnit.NANOSECONDS.toMillis(end) + "ms");
+        List<Long> testRun1 = new ArrayList<>();
+        List<Long> testRun2 = new ArrayList<>();
 
-        // Parallel processing
-        start = System.nanoTime();
-        List<Apple> moreGreenApples = apples2.parallelStream()
-                                .filter(apple -> apple.getColour() == Colour.GREEN)
-                                .collect(Collectors.toList());
+        for (int i = 0; i < 5; i++) {
+            // Sequential processing
+            long start = System.nanoTime();
+            apples.stream()
+                    .filter(apple -> apple.getColour() == Colour.GREEN)
+                    .collect(Collectors.toList());
 
-        end = System.nanoTime() - start;
-        System.out.println("Parallel took: " + TimeUnit.NANOSECONDS.toMillis(end) + "ms");
+            long end = System.nanoTime() - start;
+
+            testRun1.add(TimeUnit.NANOSECONDS.toMillis(end));
+
+            // Parallel processing
+            long start2 = System.nanoTime();
+            apples2.parallelStream()
+                    .filter(apple -> apple.getColour() == Colour.GREEN)
+                    .collect(Collectors.toList());
+
+            long end2 = System.nanoTime() - start2;
+
+            testRun2.add(TimeUnit.NANOSECONDS.toMillis(end2));
+        }
+
+        System.out.println("Sequential took: " + testRun1.stream().mapToLong(Long::longValue).average().getAsDouble() + "ms");
+        System.out.println("Parallel took: " + testRun2.stream().mapToLong(Long::longValue).average().getAsDouble() + "ms");
 
     }
 }

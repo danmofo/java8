@@ -23,7 +23,6 @@ as `Function<Apple, Boolean>` - but using `Predicate<Apple>` is more standard, a
 ## Notes
 Things that struck me as interesting and / or important.
 
-
 - Java 8 can run your stream operations on multiple CPU cores on disjoint parts of the input, this is parallelism *almost for free*, instead
 of hard work using threads.
 

@@ -1,4 +1,4 @@
-# Chapter 1
+# Chapter 1 - Why should you care?
 Notes from chapter 1.
 
 - `Class::methodName` is a function reference, meaning use this method as a value. They can be passed
@@ -16,4 +16,4 @@ when a new method is added to an interface, because a default implementation is 
 methods to be added to the List interface, without all clients that implement that interface needing to update their implementation.
 - The `Optional<T>` class can be used in place of a `null` reference and helps avoid null pointer exceptions. It uses the type system to
 indicate whether a variable can potentially have a missing value.
-- Quote: "Multicore processors aren’t fully served by existing Java programming practice."
+- **Quote**: "Multicore processors aren’t fully served by existing Java programming practice."
