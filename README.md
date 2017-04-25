@@ -1,14 +1,14 @@
-# Java 8 in action
+# Java 8
 
-A repo containing several samples / experiments from the Java 8 in action book. There is one class file per section in the book,
-so this means a chapter containing chapters `1.1.1` and `1.1.2` would have two classes named after the subject matter.
+A repo containing several samples / experiments using Java 8. Each package represents a chapter from the Java 8 in action book,
+as well as some misc packages created for other Java 8 content I've come across.
 
 Covers the following topics
 - Method references
 - Functional programming
 - Streams
 - Lambdas
-- Default interface methods
+- Default / static interface methods
 
 ## Key terms / phrases
 Key terms used throughout the book explained.
@@ -25,4 +25,8 @@ Things that struck me as interesting and / or important.
 
 - Java 8 can run your stream operations on multiple CPU cores on disjoint parts of the input, this is parallelism *almost for free*, instead
 of hard work using threads.
+
+## Sources
+- Java 8 in action book
+- [Collections refueled by Stuart Marks](https://www.youtube.com/watch?v=q6zF3vf114M)
 
