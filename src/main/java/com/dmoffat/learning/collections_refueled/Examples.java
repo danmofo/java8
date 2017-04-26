@@ -1,4 +1,4 @@
-package com.dmoffat.learning.collections_refuelled;
+package com.dmoffat.learning.collections_refueled;
 
 import java.util.*;
 import java.util.stream.Collectors;
